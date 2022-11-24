@@ -99,6 +99,7 @@ public abstract class Level {
 		if (col == 0xff0005) addEntity(new EyeBossEntity(x, y));
 		if (col == 0xff0006) addEntity(new GhostEntity(x, y));
 		if (col == 0xff0007) addEntity(new GhostBossEntity(x, y));
+		if (col == 0xff0008) addEntity(new CreatureEntity(x, y));
 		if (col == 0x1A2108 || col == 0xff0007) {
 			block.floorTex = 7;
 			block.ceilTex = 7;
