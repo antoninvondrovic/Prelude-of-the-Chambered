@@ -25,6 +25,8 @@ public class Sound {
 	public static Sound ladder = loadSound("/snd/ladder.wav");
 	public static Sound potion = loadSound("/snd/potion.wav");
 
+	public static float volume = 0.8f;
+
 	public static Sound loadSound(String fileName) {
 		Sound sound = new Sound();
 		try {
@@ -46,6 +48,9 @@ public class Sound {
 				new Thread() {
 					public void run() {
 						synchronized (clip) {
+							// set volume
+							FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+							gainControl.setValue(20f * (float) Math.log10(volume));
 							clip.stop();
 							clip.setFramePosition(0);
 							clip.start();
