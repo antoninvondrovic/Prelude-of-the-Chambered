@@ -4,8 +4,8 @@ import com.mojang.escape.*;
 import com.mojang.escape.gui.Bitmap;
 
 public class PauseMenu extends Menu {
-	private String[] options = { "Abort game", "Continue" };
-	private int selected = 1;
+	private String[] options = { "Continue", "Main Menu", "Exit" };
+	private int selected = 0;
 
 	public void render(Bitmap target) {
 		target.draw(Art.logo, 0, 8, 0, 0, 160, 36, Art.getCol(0xffffff));
@@ -30,10 +30,13 @@ public class PauseMenu extends Menu {
 		if (use) {
 			Sound.click1.play();
 			if (selected == 0) {
-				game.setMenu(new TitleMenu());
+				game.setMenu(null);
 			}
 			if (selected == 1) {
-				game.setMenu(null);
+				game.setMenu(new TitleMenu());
+			}
+			if (selected == 2) {
+				System.exit(0);
 			}
 		}
 	}
