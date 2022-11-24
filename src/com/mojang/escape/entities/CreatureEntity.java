@@ -24,7 +24,7 @@ public class CreatureEntity extends EnemyEntity {
 		super.tick();
 		if (shootDelay > 0) shootDelay--;
 		else if (random.nextInt(40) == 0) {
-			shootDelay = 40;
+			shootDelay = 20;
 			level.addEntity(new Bullet(this, x, z, Math.atan2(level.player.x - x, level.player.z - z), 0.3, 1, defaultColor));
 		}
 	}
