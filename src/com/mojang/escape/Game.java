@@ -65,7 +65,7 @@ public class Game {
 		boolean turnLeft = keys[KeyEvent.VK_Q] || (!strafe && lk);
 		boolean turnRight = keys[KeyEvent.VK_E] || (!strafe && rk);
 
-		boolean use = keys[KeyEvent.VK_SPACE];
+		boolean use = keys[KeyEvent.VK_SPACE] || keys[KeyEvent.VK_ENTER];
 
 		for (int i = 0; i < 8; i++) {
 			if (keys[KeyEvent.VK_1 + i]) {
@@ -84,6 +84,7 @@ public class Game {
 
 		if (use) {
 			keys[KeyEvent.VK_SPACE] = false;
+			keys[KeyEvent.VK_ENTER] = false;
 		}
 
 		if (menu != null) {
