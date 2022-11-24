@@ -67,6 +67,8 @@ public class Game {
 
 		boolean use = keys[KeyEvent.VK_SPACE] || keys[KeyEvent.VK_ENTER];
 
+		boolean debugLevel = keys[KeyEvent.VK_F9];
+
 		for (int i = 0; i < 8; i++) {
 			if (keys[KeyEvent.VK_1 + i]) {
 				keys[KeyEvent.VK_1 + i] = false;
@@ -85,6 +87,21 @@ public class Game {
 		if (use) {
 			keys[KeyEvent.VK_SPACE] = false;
 			keys[KeyEvent.VK_ENTER] = false;
+		}
+
+		if (debugLevel) {
+			keys[KeyEvent.VK_F9] = false;
+			setMenu(null);
+			Level.clear();
+			level = Level.loadLevel(this, "backrooms");
+
+			player = new Player();
+			player.level = level;
+			level.player = player;
+			player.x = level.xSpawn;
+			player.z = level.ySpawn;
+			level.addEntity(player);
+			player.rot = Math.PI + 0.4;
 		}
 
 		if (menu != null) {
