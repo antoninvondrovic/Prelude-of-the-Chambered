@@ -4,7 +4,7 @@ import com.mojang.escape.*;
 import com.mojang.escape.gui.Bitmap;
 
 public class TitleMenu extends Menu {
-	private String[] options = { "New game", "Instructions", "About" };
+	private String[] options = { "New game", "Instructions", "About", "Exit" };
 	private int selected = 0;
 	private boolean firstTick = true;
 
@@ -45,6 +45,9 @@ public class TitleMenu extends Menu {
 			}
 			if (selected == 2) {
 				game.setMenu(new AboutMenu());
+			}
+			if (selected == 3) {
+				System.exit(0);
 			}
 		}
 	}
