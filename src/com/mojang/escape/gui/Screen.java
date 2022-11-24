@@ -84,6 +84,8 @@ public class Screen extends Bitmap {
 			draw("" + game.player.loot, 10, height - 26 + 8, 0xffffff);
 			draw("Å", 3, height - 26 + 16, 0xff0000);
 			draw("" + game.player.health, 10, height - 26 + 16, 0xffffff);
+			draw("x" + (int)game.player.x, 2, 2, 0xffffff);
+			draw("z" + (int)game.player.z, 2, 12, 0xffffff);
 
 			for (int i = 0; i < 8; i++) {
 				Item slotItem = game.player.items[i];
@@ -108,7 +110,7 @@ public class Screen extends Bitmap {
 		if (game.menu != null) {
 			for (int i = 0; i < pixels.length; i++) {
 				pixels[i] = (pixels[i] & 0xfcfcfc) >> 2;
-			}			
+			}
 			game.menu.render(this);
 		}
 
