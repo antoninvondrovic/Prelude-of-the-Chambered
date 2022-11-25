@@ -6,9 +6,11 @@ import com.mojang.escape.gui.Bitmap;
 public class TitleMenu extends Menu {
     private String[] options = {
             "New game",
+            "New game (Bonus)",
             "Instructions",
             "About",
             "Sound:",
+            "Credits",
             "Exit"
     };
     private int selected = 0;
@@ -27,8 +29,8 @@ public class TitleMenu extends Menu {
             }
             target.draw(msg, 40, 45 + i * 10, Art.getCol(col));
         }
-        target.draw("Modded by Flowyan", 1 + 2, 120 - 20, Art.getCol(0x303030));
-        target.draw("Copyright (C) 2011 Mojang", 1 + 2, 120 - 10, Art.getCol(0x303030));
+//        target.draw("Modded by Flowyan", 1 + 2, 120 - 20, Art.getCol(0x303030));
+//        target.draw("Copyright (C) 2011 Mojang", 1 + 2, 120 - 10, Art.getCol(0x303030));
     }
 
     public void tick(Game game, boolean up, boolean down, boolean left, boolean right, boolean use) {
@@ -36,7 +38,7 @@ public class TitleMenu extends Menu {
             firstTick = false;
             Sound.altar.play();
 
-            options[3] = "Sound:" + (int) (Sound.volume * 100) + "%";
+            options[4] = "Sound:" + (int) (Sound.volume * 100) + "%";
         }
         if (up || down) Sound.click2.play();
         if (up) selected--;
@@ -50,17 +52,24 @@ public class TitleMenu extends Menu {
                 game.newGame();
             }
             if (selected == 1) {
-                game.setMenu(new InstructionsMenu());
+                game.setMenu(null);
+                game.newBonusGame();
             }
             if (selected == 2) {
+                game.setMenu(new InstructionsMenu());
+            }
+            if (selected == 3) {
                 game.setMenu(new AboutMenu());
             }
-            if (selected == 4) {
+            if (selected == 5) {
+                game.setMenu(new CreditsMenu());
+            }
+            if (selected == 6) {
                 System.exit(0);
             }
         }
         // Volume control
-        if (selected == 3) {
+        if (selected == 4) {
             if (left) {
                 Sound.volume -= 0.1;
                 if (Sound.volume < 0) Sound.volume = 0;
@@ -71,9 +80,7 @@ public class TitleMenu extends Menu {
                 if (Sound.volume > 1) Sound.volume = 1;
                 Sound.click1.play();
             }
-            options[3] = "Sound:" + (int) (Sound.volume * 100) + "%";
+            options[4] = "Sound:" + (int) (Sound.volume * 100) + "%";
         }
     }
-
-
 }
