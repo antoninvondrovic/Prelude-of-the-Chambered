@@ -16,8 +16,7 @@ public class BonusLevel extends Level {
 	}
 
 	public void switchLevel(int id) {
-		if (id == 1) game.switchLevel("overworld", 1);
-		if (id == 2) game.switchLevel("dust", 1);
+		if (id == 1) game.switchLevel("dust", 1);
 	}
 
 	public void getLoot(int id) {

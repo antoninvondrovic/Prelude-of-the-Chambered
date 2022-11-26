@@ -13,9 +13,6 @@ public class DustLevel extends Level {
 
 	public void switchLevel(int id) {
 		if (id == 1) game.switchLevel("bonus", 1);
-		if (id == 2) game.switchLevel("crypt", 1);
-		if (id == 3) game.switchLevel("temple", 1);
-		if (id == 5) game.switchLevel("ice", 1);
 	}
 
 	public void getLoot(int id) {
