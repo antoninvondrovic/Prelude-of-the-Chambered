@@ -30,6 +30,18 @@ public class Game {
 		level.addEntity(player);
 		player.rot = Math.PI + 0.4;
 	}
+	public void newBonusGame() {
+		Level.clear();
+		level = Level.loadLevel(this, "bonus");
+
+		player = new Player();
+		player.level = level;
+		level.player = player;
+		player.x = level.xSpawn;
+		player.z = level.ySpawn;
+		level.addEntity(player);
+		player.rot = Math.PI + 0.4;
+	}
 
 	public void switchLevel(String name, int id) {
 		pauseTime = 30;
@@ -68,6 +80,7 @@ public class Game {
 		boolean use = keys[KeyEvent.VK_SPACE] || keys[KeyEvent.VK_ENTER];
 
 		boolean debugLevel = keys[KeyEvent.VK_F9];
+		boolean bonusLevel = keys[KeyEvent.VK_F8];
 
 		for (int i = 0; i < 8; i++) {
 			if (keys[KeyEvent.VK_1 + i]) {
@@ -94,6 +107,21 @@ public class Game {
 			setMenu(null);
 			Level.clear();
 			level = Level.loadLevel(this, "backrooms");
+
+			player = new Player();
+			player.level = level;
+			level.player = player;
+			player.x = level.xSpawn;
+			player.z = level.ySpawn;
+			level.addEntity(player);
+			player.rot = Math.PI + 0.4;
+		}
+
+		if (bonusLevel) {
+			keys[KeyEvent.VK_F8] = false;
+			setMenu(null);
+			Level.clear();
+			level = Level.loadLevel(this, "bonus");
 
 			player = new Player();
 			player.level = level;
