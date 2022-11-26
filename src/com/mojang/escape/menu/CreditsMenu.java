@@ -14,13 +14,14 @@ public class CreditsMenu extends Menu {
 		target.draw("Credits", 60, 8, Art.getCol(0xffffff));
 		
 		String[] lines = {
-				"",
-				"",
 				"Made by Markus Persson",
 				"",
 				"Modded by Flowyan",
 				"",
 				"",
+				"",
+				"",
+				"Copyright (C) 2011 Mojang",
 		};
 		
 		for (int i=0; i<lines.length; i++) {

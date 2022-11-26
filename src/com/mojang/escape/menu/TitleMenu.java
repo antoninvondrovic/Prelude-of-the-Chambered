@@ -29,8 +29,8 @@ public class TitleMenu extends Menu {
             }
             target.draw(msg, 40, 45 + i * 10, Art.getCol(col));
         }
-        target.draw("Modded by Flowyan", 1 + 2, 120 - 20, Art.getCol(0x303030));
-        target.draw("Copyright (C) 2011 Mojang", 1 + 2, 120 - 10, Art.getCol(0x303030));
+//        target.draw("Modded by Flowyan", 1 + 2, 120 - 20, Art.getCol(0x303030));
+//        target.draw("Copyright (C) 2011 Mojang", 1 + 2, 120 - 10, Art.getCol(0x303030));
     }
 
     public void tick(Game game, boolean up, boolean down, boolean left, boolean right, boolean use) {
